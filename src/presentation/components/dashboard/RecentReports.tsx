@@ -35,7 +35,7 @@ export const RecentReports: React.FC<RecentReportsProps> = ({ reportes }) => {
           {recent.map((reporte) => (
             <div key={reporte.id} className="flex items-start justify-between p-3 rounded-lg hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-colors group cursor-pointer" onClick={() => navigate(getPathForCategory(reporte.categoria))}>
               <div className="space-y-1">
-                <p className="text-sm font-medium text-gray-900 line-clamp-1">{reporte.titulo}</p>
+                <p className="text-sm font-medium text-gray-900 line-clamp-1">{reporte.numeroContacto}</p>
                 <div className="flex items-center gap-2 text-xs text-gray-500">
                   <span className="font-mono">{reporte.id}</span>
                   <span>•</span>

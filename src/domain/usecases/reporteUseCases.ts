@@ -13,7 +13,7 @@ export const filtrarReportes = (
     if (filtros.estado && r.estado !== filtros.estado) coincide = false;
     if (filtros.busqueda) {
       const q = filtros.busqueda.toLowerCase();
-      if (!r.titulo.toLowerCase().includes(q) && !r.id.toLowerCase().includes(q)) {
+      if (!r.numeroContacto.toLowerCase().includes(q) && !r.id.toLowerCase().includes(q)) {
         coincide = false;
       }
     }

@@ -17,7 +17,7 @@ interface ServicioPageTemplateProps {
 export const ServicioPageTemplate: React.FC<ServicioPageTemplateProps> = ({ categoria, titulo }) => {
   const { reportes, loading } = useReportes(categoria);
   const { filters, updateFilter } = useFilters({ busqueda: '', estado: '' as EstadoReporte | '' });
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log(isModalOpen); // Suppress unused warning
 
@@ -27,18 +27,18 @@ export const ServicioPageTemplate: React.FC<ServicioPageTemplateProps> = ({ cate
     if (filters.estado && r.estado !== filters.estado) coincide = false;
     if (filters.busqueda) {
       const q = filters.busqueda.toLowerCase();
-      if (!r.titulo.toLowerCase().includes(q) && !r.id.toLowerCase().includes(q)) coincide = false;
+      if (!r.numeroContacto.toLowerCase().includes(q) && !r.id.toLowerCase().includes(q)) coincide = false;
     }
     return coincide;
   });
 
   const columns: ColumnDef<Reporte>[] = [
     { accessorKey: 'id', header: 'ID Reporte', cell: info => <span className="font-mono text-gray-500">{info.getValue() as string}</span> },
-    { accessorKey: 'titulo', header: 'Título / Asunto', cell: info => <span className="font-medium text-gray-900">{info.getValue() as string}</span> },
+    { accessorKey: 'numeroContacto', header: 'Número de contacto', cell: info => <span className="font-medium text-gray-900">{info.getValue() as string}</span> },
     { accessorKey: 'fechaCreacion', header: 'Fecha', cell: info => new Date(info.getValue() as string).toLocaleDateString() },
     { accessorKey: 'prioridad', header: 'Prioridad', cell: info => <PriorityBadge priority={info.getValue() as any} /> },
     { accessorKey: 'estado', header: 'Estado', cell: info => <StatusBadge status={info.getValue() as any} /> },
-    { accessorKey: 'ubicacion', header: 'Ubicación' },
+    { accessorKey: 'sector', header: 'Sector' },
   ];
 
   return (
@@ -50,13 +50,13 @@ export const ServicioPageTemplate: React.FC<ServicioPageTemplateProps> = ({ cate
           <p className="text-sm text-gray-500 mt-1">Gestión y control de reportes ciudadanos</p>
         </div>
         <div className="flex items-center gap-3 w-full sm:w-auto">
-          <ExportButtons 
-            data={reportesFiltrados} 
-            headers={['ID', 'Título', 'Fecha', 'Prioridad', 'Estado', 'Ubicación']}
+          <ExportButtons
+            data={reportesFiltrados}
+            headers={['ID', 'Número de contacto', 'Fecha', 'Prioridad', 'Estado', 'Sector']}
             filename={`Reportes_${categoria.replace(' ', '_')}`}
             title={`Reportes de ${categoria}`}
           />
-          <button 
+          <button
             onClick={() => setIsModalOpen(true)}
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
           >
@@ -70,9 +70,9 @@ export const ServicioPageTemplate: React.FC<ServicioPageTemplateProps> = ({ cate
       <div className="bg-white p-4 rounded-xl border border-border shadow-sm flex flex-col sm:flex-row gap-4 items-center justify-between">
         <div className="relative w-full sm:max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-          <input 
-            type="text" 
-            placeholder="Buscar por ID o título..." 
+          <input
+            type="text"
+            placeholder="Buscar por ID o título..."
             value={filters.busqueda}
             onChange={(e) => updateFilter('busqueda', e.target.value)}
             className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
@@ -80,7 +80,7 @@ export const ServicioPageTemplate: React.FC<ServicioPageTemplateProps> = ({ cate
         </div>
         <div className="flex items-center gap-2 w-full sm:w-auto">
           <Filter className="w-4 h-4 text-gray-400" />
-          <select 
+          <select
             value={filters.estado}
             onChange={(e) => updateFilter('estado', e.target.value)}
             className="w-full sm:w-48 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-white"
@@ -98,10 +98,10 @@ export const ServicioPageTemplate: React.FC<ServicioPageTemplateProps> = ({ cate
       {loading ? (
         <div className="h-64 flex items-center justify-center text-gray-500">Cargando reportes...</div>
       ) : (
-        <ReportTable 
-          columns={columns} 
-          data={reportesFiltrados} 
-          onRowClick={(row) => console.log('View details', row)} 
+        <ReportTable
+          columns={columns}
+          data={reportesFiltrados}
+          onRowClick={(row) => console.log('View details', row)}
         />
       )}
     </div>

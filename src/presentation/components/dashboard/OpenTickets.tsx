@@ -59,11 +59,11 @@ export const OpenTickets: React.FC<OpenTicketsProps> = ({ reportes }) => {
                 {getPriorityIcon(reporte.prioridad)}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">{reporte.titulo}</p>
+                <p className="text-sm font-medium text-gray-900 truncate">{reporte.numeroContacto}</p>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-xs text-gray-500">{reporte.categoria}</span>
                   <span className="text-gray-300">•</span>
-                  <span className="text-xs text-gray-500 truncate">{reporte.ubicacion}</span>
+                  <span className="text-xs text-gray-500 truncate">{reporte.sector}</span>
                 </div>
               </div>
               <div className="ml-3 shrink-0 text-right">

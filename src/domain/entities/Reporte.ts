@@ -1,30 +1,30 @@
-export type CategoriaServicio = 
-  | 'Aguas' 
-  | 'Vialidad' 
-  | 'Aseo Urbano' 
-  | 'Seguridad' 
-  | 'Alumbrado' 
+export type CategoriaServicio =
+  | 'Aguas'
+  | 'Vialidad'
+  | 'Aseo Urbano'
+  | 'Seguridad'
+  | 'Alumbrado'
   | 'Transporte';
 
-export type EstadoReporte = 
-  | 'Pendiente' 
-  | 'En Proceso' 
-  | 'Resuelto' 
+export type EstadoReporte =
+  | 'Pendiente'
+  | 'En Proceso'
+  | 'Resuelto'
   | 'Rechazado';
 
-export type PrioridadReporte = 
-  | 'Alta' 
-  | 'Media' 
+export type PrioridadReporte =
+  | 'Alta'
+  | 'Media'
   | 'Baja';
 
 export interface Reporte {
   id: string;
-  titulo: string;
+  numeroContacto: string;
   descripcion: string;
   categoria: CategoriaServicio;
   estado: EstadoReporte;
   prioridad: PrioridadReporte;
-  ubicacion: string;
+  sector: string;
   fechaCreacion: Date;
   fechaActualizacion: Date;
   usuarioAsignado?: string;

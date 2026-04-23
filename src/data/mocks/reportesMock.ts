@@ -4,18 +4,7 @@ const categorias: CategoriaServicio[] = ['Aguas', 'Vialidad', 'Aseo Urbano', 'Se
 const estados: EstadoReporte[] = ['Pendiente', 'En Proceso', 'Resuelto', 'Rechazado'];
 const prioridades: PrioridadReporte[] = ['Alta', 'Media', 'Baja'];
 
-const descripciones = [
-  "Bote de aguas blancas en la calle principal",
-  "Semáforo dañado en la intersección",
-  "Acumulación de basura desde hace 3 días",
-  "Robo de alcantarilla",
-  "Poste de luz sin funcionar",
-  "Falla en el servicio de transporte público",
-  "Tubería rota inundando la acera",
-  "Hueco profundo en la avenida",
-  "Falta de recolección de desechos sólidos",
-  "Necesidad de patrullaje policial en la zona"
-];
+
 
 const generarReportesMock = (cantidad: number): Reporte[] => {
   const reportes: Reporte[] = [];
@@ -36,12 +25,12 @@ const generarReportesMock = (cantidad: number): Reporte[] => {
 
     reportes.push({
       id: `REP-${now.getFullYear()}-${String(i).padStart(4, '0')}`,
-      titulo: descripciones[Math.floor(Math.random() * descripciones.length)],
+      numeroContacto: `+58 412 ${Math.floor(1000000 + Math.random() * 9000000)}`,
       descripcion: "Detalle completo del reporte ciudadano con información adicional y contexto de la situación reportada por el usuario en el sistema.",
       categoria,
       estado,
       prioridad,
-      ubicacion: `Sector ${Math.floor(Math.random() * 10) + 1}, Calle ${Math.floor(Math.random() * 20) + 1}`,
+      sector: `Sector ${Math.floor(Math.random() * 10) + 1}, Calle ${Math.floor(Math.random() * 20) + 1}`,
       fechaCreacion,
       fechaActualizacion,
       usuarioAsignado: Math.random() > 0.5 ? 'Admin' : 'Operador',
