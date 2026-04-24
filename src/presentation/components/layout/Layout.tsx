@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
+import { useReporteStore } from '../../stores/reporteStore';
+import { useBienStore } from '../../stores/bienStore';
 
 export const Layout: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const fetchReportes = useReporteStore(state => state.fetchReportes);
+  const fetchBienes = useBienStore(state => state.fetchBienes);
+
+  useEffect(() => {
+    fetchReportes();
+    fetchBienes();
+  }, [fetchReportes, fetchBienes]);
 
   return (
     <div className="flex min-h-screen bg-brightSnow font-sans">

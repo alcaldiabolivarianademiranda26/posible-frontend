@@ -12,9 +12,9 @@ import {
   Settings,
   LogOut,
   ChevronDown,
-  Building2,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Landmark,
 } from 'lucide-react';
 import { useAuthStore } from '../../stores/authStore';
 
@@ -38,17 +38,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, setIsCollapsed })
 
   return (
     <aside className={`custom-scrollbar bg-primary text-white flex flex-col h-screen fixed left-0 top-0 overflow-y-auto transition-all duration-300 z-50 ${isCollapsed ? 'w-20' : 'w-64'}`}>
-      
+
       {/* Header */}
       <div className={`p-6 flex items-center border-b border-white/10 relative ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
-        <Building2 className="w-8 h-8 text-white shrink-0" />
+        <Landmark className="w-8 h-8 text-white shrink-0" />
         {!isCollapsed && (
           <div className="whitespace-nowrap overflow-hidden">
             <h2 className="font-bold text-lg leading-tight tracking-tight">Municipio Miranda</h2>
             <p className="text-xs text-white/70">Gestión Soberana</p>
           </div>
         )}
-        <button 
+        <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className={`absolute top-1/2 -translate-y-1/2 bg-blue-800 text-white rounded-full p-1.5 shadow-md hover:bg-blue-700 transition-all ${isCollapsed ? '-right-3.5 opacity-0 hover:opacity-100 group-hover:opacity-100 hidden' /* Opcional: mostrar un boton flotante, pero es mejor dejarlo estatico */ : ''}`}
           style={isCollapsed ? { right: 'auto', left: '50%', transform: 'translate(-50%, 20px)' } : { right: '-12px' }}
@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, setIsCollapsed })
 
       {/* Como el absolute con w-20 puede verse mal, pondremos el botón de colapsar integrado en la UI principal para que sea facil de clickear */}
       <div className="flex justify-end p-2 border-b border-white/10">
-        <button 
+        <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="text-white/50 hover:text-white p-1 rounded-md transition-colors mx-auto"
           title={isCollapsed ? "Expandir" : "Contraer"}
@@ -91,7 +91,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, setIsCollapsed })
             </button>
           ) : (
             <div className="flex justify-center py-2 mb-1">
-               <div className="w-8 h-px bg-white/20"></div>
+              <div className="w-8 h-px bg-white/20"></div>
             </div>
           )}
 
@@ -119,7 +119,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, setIsCollapsed })
             <p className="px-3 py-2 text-xs font-semibold text-white/50 uppercase tracking-wider">Gestión Interna</p>
           ) : (
             <div className="flex justify-center py-2 mt-2 mb-1">
-               <div className="w-8 h-px bg-white/20"></div>
+              <div className="w-8 h-px bg-white/20"></div>
             </div>
           )}
           <NavLink
