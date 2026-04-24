@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
-import { Building2, Lock, User, Loader2 } from 'lucide-react';
+import { Lock, User, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import iglesia from '../../assets/iglesia.jpg';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ export const LoginPage: React.FC = () => {
       toast.error('Por favor, ingrese sus credenciales');
       return;
     }
-    
+
     setIsLoading(true);
     const success = await login(email, password);
     setIsLoading(false);
@@ -33,16 +34,17 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brightSnow flex flex-col justify-center items-center p-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-xl overflow-hidden border border-border">
+    <div className="relative min-h-screen flex flex-col justify-center items-center p-4">
+      <div className="absolute inset-0 bg-cover bg-center filter blur-sm" style={{ backgroundImage: `url(${iglesia})` }}></div>
+      <div className="max-w-md w-full bg-white/70 rounded-xl shadow-xl overflow-hidden border border-border backdrop-blur-sm">
         <div className="bg-primary p-6 text-center text-white">
-          <div className="mx-auto bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-            <Building2 className="w-8 h-8" />
+          <div className="mx-auto flex items-center justify-center w-20 h-20 bg-white rounded-full mb-2 shadow-md">
+            <img src="../../src/assets/logo_miranda.png" alt="Logo Miranda" className="w-15 h-12 " />
           </div>
           <h1 className="text-2xl font-bold">Portal Administrativo</h1>
           <p className="text-primary-foreground/80 mt-1 text-sm">Sistema de Gestión de Reportes y Bienes</p>
         </div>
-        
+
         <div className="p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -92,7 +94,7 @@ export const LoginPage: React.FC = () => {
               )}
             </button>
           </form>
-          
+
           <div className="mt-6 text-center text-xs text-gray-500">
             <p>Credenciales de prueba: admin@institucion.gob / cualquier clave</p>
           </div>
