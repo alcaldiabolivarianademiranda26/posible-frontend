@@ -1,7 +1,7 @@
 import React from 'react';
 import { useReportes } from '../hooks/useReportes';
 import { useBienes } from '../hooks/useBienes';
-import { KpiCard } from '../components/dashboard/KpiCard';
+import { KpiCard, KpiCard2, KpiCard3, KpiCard4 } from '../components/dashboard/KpiCard';
 import { TrendChart } from '../components/dashboard/TrendChart';
 import { DistributionChart } from '../components/dashboard/DistributionChart';
 import { RecentReports } from '../components/dashboard/RecentReports';
@@ -36,24 +36,24 @@ export const Dashboard: React.FC = () => {
           iconClassName="text-orange-600 bg-orange-100"
           trend={{ value: 12, label: 'vs mes anterior', positive: false }}
         />
-        <KpiCard
+        <KpiCard2
           title="Reportes Resueltos (Mes)"
           value={kpisReportes.resueltosMes}
           icon={CheckCircle2}
           iconClassName="text-green-600 bg-green-100"
           trend={{ value: 8, label: 'vs mes anterior', positive: true }}
         />
-        <KpiCard
+        <KpiCard3
           title="Tasa de Resolución"
           value={`${kpisReportes.tasaResolucion}%`}
           icon={Percent}
-          iconClassName="text-blue-600 bg-blue-100"
+          iconClassName="text-[#087A6F] bg-blue-100"
         />
-        <KpiCard
+        <KpiCard4
           title="Bienes Registrados"
           value={kpisBienes.total}
           icon={Box}
-          iconClassName="text-indigo-600 bg-indigo-100"
+          iconClassName="text-[#4878B1] bg-indigo-100"
         />
       </div>
 
