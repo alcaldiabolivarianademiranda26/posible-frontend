@@ -16,6 +16,7 @@ import {
   ChevronRight,
   Landmark,
 } from 'lucide-react';
+import logo from '../../../assets/svg.svg';
 import { useAuthStore } from '../../stores/authStore';
 
 const serviciosPublicos = [
@@ -41,11 +42,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, setIsCollapsed })
 
       {/* Header */}
       <div className={`p-6 flex items-center border-b border-white/10 relative ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
-        <Landmark className="w-8 h-8 text-white shrink-0" />
+        <img src={logo} alt="Logo Miranda" className="w-8 h-8 text-white shrink-0" />
         {!isCollapsed && (
           <div className="whitespace-nowrap overflow-hidden">
             <h2 className="font-bold text-lg leading-tight tracking-tight">Municipio Miranda</h2>
-            <p className="text-xs text-white/70">Gestión Soberana</p>
+            <p className="text-xs text-white/70">Gestión De Reportes y Bienes</p>
           </div>
         )}
         <button

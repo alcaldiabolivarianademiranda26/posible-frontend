@@ -4,6 +4,7 @@ import { useAuthStore } from '../stores/authStore';
 import { Lock, User, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import iglesia from '../../assets/iglesia.jpg';
+import logo from '../../assets/svg.svg';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -38,11 +39,10 @@ export const LoginPage: React.FC = () => {
       <div className="absolute inset-0 bg-cover bg-center filter blur-sm" style={{ backgroundImage: `url(${iglesia})` }}></div>
       <div className="max-w-md w-full bg-white/70 rounded-xl shadow-xl overflow-hidden border border-border backdrop-blur-sm">
         <div className="bg-primary p-6 text-center text-white">
-          <div className="mx-auto flex items-center justify-center w-20 h-20 bg-white rounded-full mb-2 shadow-md">
-            <img src="../../src/assets/logo_miranda.png" alt="Logo Miranda" className="w-15 h-12 " />
-          </div>
-          <h1 className="text-2xl font-bold">Portal Administrativo</h1>
-          <p className="text-primary-foreground/80 mt-1 text-sm">Sistema de Gestión de Reportes y Bienes</p>
+
+          <img src={logo} alt="Logo Miranda" className="-rotate-[0.3deg] w-15 h-12 mx-auto flex items-center justify-center" />
+
+          <h1 className="text-2xl font-bold">Sistema de Gestión</h1>
         </div>
 
         <div className="p-8">
